@@ -38,12 +38,7 @@ const myPosts = [
     },
 ];
 
-const counter = { posts: `${myPosts.length}` }
-console.log(counter);
 
-module.exports = {
-    counter,
-    myPosts,
-}
+module.exports = myPosts;
 
 

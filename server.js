@@ -12,9 +12,9 @@ app.get("/", (req, res) => {
 })
 
 
+// Routes
 
-
-
+app.use("/posts", postsRouter);
 
 
 // At address not found
