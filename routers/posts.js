@@ -52,6 +52,17 @@ router.post("/", (req, res) => {
     res.send("New post created!");
 });
 
+// Update - Change an item fully
+
+router.put("/:id", (req, res) => {
+    res.send("Item fully modified");
+})
+
+// Modify - Modify partially an item
+
+router.patch("/:id", (req, res) => {
+    res.send("Item patched")
+})
 
 
 // Mid point
