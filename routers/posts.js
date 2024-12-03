@@ -46,6 +46,13 @@ router.get("/:id", (req, res) => {
     }
 });
 
+// Store - Create a new item
+
+router.post("/", (req, res) => {
+    res.send("New post created!");
+});
+
+
 
 // Mid point
 module.exports = router;
