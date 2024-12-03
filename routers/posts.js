@@ -20,17 +20,18 @@ const posts = require("../data/database.js");
 
 // Index - Get all posts: localhost:3000/posts
 router.get("/", (req, res) => {
-    const postName = req.query.name;
+    const postTitle = req.query.title;
+    console.log(postTitle);
     //
     let response = {
         totalPosts: posts.length,
         data: [...posts]
     };
     //
-    if (postName) {
-        response.data = posts.myPosts.filter((item) => {
-            item.name.toLowerCase().includes(postName.toLowerCase())
-        });
+    if (postTitle) {
+        response.data = posts.filter((post) =>
+            post.title.toLowerCase().includes(postTitle.toLowerCase())
+        );
         //    
         if (response.data.length < 1) {
             res.status(404);
@@ -43,7 +44,7 @@ router.get("/", (req, res) => {
     res.json(response);
 });
 
-// Show - Get one post by id
+// Show - Get one post by id: localhost:3000/posts/[id]
 router.get("/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const post = posts.find((post) => post.id === id);
@@ -70,7 +71,7 @@ router.post("/", (req, res) => {
 // Update - Change an item fully
 
 router.put("/:id", (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const post = posts.find((post) => post.id === id);
     if (post) {
         res.send("Item fully modified");
@@ -82,7 +83,7 @@ router.put("/:id", (req, res) => {
 // Modify - Modify partially an item
 
 router.patch("/:id", (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const post = posts.find((post) => post.id === id);
     if (post) {
         res.send("Item patched")
